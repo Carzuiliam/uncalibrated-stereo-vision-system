@@ -23,7 +23,7 @@ Configuring the MATLAB:
 
 6) Enjoy!
 
-You will probably need a MATLAB account to download and install these packages (it's free to create). And all the images inside the "Test" folder was obtained from the Middlebury database (http://vision.middlebury.edu/stereo/eval3/). 
+You will probably need a MATLAB account to download and install these packages (it's free to create). All the images inside the "Test" folder was obtained from the Middlebury database (http://vision.middlebury.edu/stereo/eval3/). 
 
 Any questions can be submitted to the following email: carloswdecarvalho@outlook.com.
 
