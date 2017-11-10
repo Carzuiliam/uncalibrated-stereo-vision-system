@@ -1,4 +1,4 @@
-        Este é um projeto em MATLAB cujo objetivo é criar um mapa de disparidades a partir de uma cena real, capturada por um par de câmeras, sem qualquer tipo de calibração prévia. O mapa de disparidades é um mapa que exibe a profundidade dos elementos presentes em uma cena. 
+Este é um projeto em MATLAB cujo objetivo é criar um mapa de disparidades a partir de uma cena real, capturada por um par de câmeras, sem qualquer tipo de calibração prévia. O mapa de disparidades é um mapa que exibe a profundidade dos elementos presentes em uma cena. 
 
 ---------------------------------------------------------------------------------------------------------------------------------
 
