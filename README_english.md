@@ -4,16 +4,16 @@ This is a project on MATLAB that objective is to create a disparity map from a r
 
 Utilized materials:
 
--- MATLAB R2014b, x64 version: https://www.mathworks.com/products/matlab.html
--- Minoru 3D Webcam (optional): http://www.minoru3d.com/
+- MATLAB R2014b, x64 version: https://www.mathworks.com/products/matlab.html
+- Minoru 3D Webcam (optional): http://www.minoru3d.com/
 
 Configuring the MATLAB:
 
 1) Open MATLAB (duh);
 2) Type the command supportPackageInstaller on MATLAB console and press Enter;
 3) Once the Package Installer Manager was open, find these two libraries to install:
-        - USB Webcam;
-        - OS Generic Video Interface;
+	- USB Webcam;
+	- OS Generic Video Interface;
 4) Set the MATLAB path to the folder that contains the project (probably the folder with this file);
 5.a) If you want to use webcams, find the ID (is a number, generally 1 and 2 to left and right cams) of each webcam, change the values of LEFT_CAM/RGHT_CAM with the ID of each one and change the value of USE_WCAM to 1, on the main.m file;
 5.b) If you don't want to use webcams, open the testData.m file and make sure the path of the image pair is correct (usually images/<Folder>/<Image>.png);
