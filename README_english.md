@@ -1,4 +1,4 @@
-        This is a project on MATLAB that objective is to create a disparity map from a real scene, captured by a pair of cameras, without any previous calibration. The disparity map is a map which shows the deep of elements presents in a scene. 
+This is a project on MATLAB that objective is to create a disparity map from a real scene, captured by a pair of cameras, without any previous calibration. The disparity map is a map which shows the deep of elements presents in a scene. 
 
 ---------------------------------------------------------------------------------------------------------------------------------
 
