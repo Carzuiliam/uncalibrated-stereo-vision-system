@@ -12,6 +12,6 @@ figure;
 
 %	Exibe uma das imagens do sistema de visão estéreo.
 imshow(image);
-title('Original Image');
+title('Original Image (Left)');
 
 end

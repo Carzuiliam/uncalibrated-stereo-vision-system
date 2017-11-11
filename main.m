@@ -1,50 +1,53 @@
 %==========================================================================
-%                             SCRIPT PRINCIPAL
+%                             MAIN SCRIPT
 % 
-%   Este é o scrpit principal do projeto. É necessário um par de câmeras ou
-% um par de imagens previamente capturadas para o funcionamento do mesmo.
+%   This is the mains script of the project. It is necessary a webcam pair 
+% or a stereo image pair previously captured to make this script works.
 %==========================================================================
 
 function main
 
-% ============================== CONSTANTES ===============================
+% =========================== STATIC VARIABLES ============================
 
-%   Variável utilizada para o tipo de entrada: câmera (1) ou arquivo (0).
+%   Used to set the input type: a pair of cameras (1) or a file path (0).
 USE_WCAM = 0;
 
-%   O ID de cada câmera, necessário caso a captura tenha de ser feita du-
-% rante a execução do código.
+%   Used to configure the utilized database: Middlebury or Tsukuba.
+%DATABASE = 'Tsukuba';
+DATABASE = 'Middlebury';
+
+%   The ID of each camera, needed if the images will be captured by the 
+% script.
 LEFT_CAM = 3;
 RGHT_CAM = 1;
 
-%   Porcentagem máxima de pixels nulos em um mapa. Quanto menor tal valor,
-% melhor o mapa -- mas tal procedimento pode incrementar o tempo de proces-
-% samento de um mapa.
+%   Maximum percentage of blank pixels inside the map. The lower this value,
+% the better the map -- but lower values can increase the number of retries
+% to generate a acceptable disparity map, slowing the process.
 MAX_BLNK = 5.0;
 
-%   Variável utilizada no controle do processo de geração do mapa de dispa-
-% ridades.
-GENERATE =  1;
+%   Used to control the process of the disparity map generation.
+GENERATE = 1;
 
-% ======================= CARREGANDO IMAGENS ==============================
+% =========================== LOADING IMAGES ==============================
 
-%   Verifica o tipo de entrada das imagens.
+%   Check the input type.
 switch USE_WCAM
     case 1
-        %   Webcam: captura imagens via webcam.
+        %   Webcam: capture the images using the webcams.
         [lSnap, rSnap, error] = extractImages(LEFT_CAM, RGHT_CAM);
     otherwise
-        %   Arquivo: carrega imagens via diretório.
-        [lSnap, rSnap, error] = testData;        
+        %   File: load images from a directory (Tsukuba or Middlebury).
+        [lSnap, rSnap, error] = testData(DATABASE);        
 end
 
-%   Verifica se houveram erros no carregamento das imagens.
+%   Verify if there are any errors while loading the images.
 if error == 1
     disp('Can`t find the webcams. Check it!');
     return;
 end
 
-% =========================== PRE-PROCESSAMENTO z===========================
+% =========================== PRE-PROCESSAMENTO ===========================
 
 tic;
 
@@ -105,7 +108,7 @@ while GENERATE == 1
     else
         showImage(lSnap);
         showDisparity(dMap, dRng, 'Final Disparity Map');
-        %disp(getFitness(dMap));
+        disp(getFitness(dMap));
     end
     
 end

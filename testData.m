@@ -6,12 +6,26 @@
 % ambiente.
 %==========================================================================
 
-function [lSnap, rSnap, error] = testData
+function [lSnap, rSnap, error] = testData(database)
+
+%	Lê os arquivos de imagem de um diretório.
+if strcmp(database, 'Tsukuba') == true
+    pathL = 'images/Tsukuba/left/frame_1.png';
+    pathR = 'images/Tsukuba/right/frame_1.png';
+else
+    if strcmp(database, 'Middlebury') == true
+        pathL = 'images/Middlebury/Djembe/im0.png';
+        pathR = 'images/Middlebury/Djembe/im1.png';
+    else
+        error = 1;
+        return;
+    end
+end
 
 %	Lê os arquivos de imagem de um diretório.
 try 
-    lSnap = imread('images/Plants/im0.png', 'png');
-    rSnap = imread('images/Plants/im1.png', 'png');
+    lSnap = imread(pathL, 'png');
+    rSnap = imread(pathR, 'png');
 catch
     error = 1;
     return;
