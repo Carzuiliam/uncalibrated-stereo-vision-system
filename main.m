@@ -47,32 +47,31 @@ if error == 1
     return;
 end
 
-% =========================== PRE-PROCESSAMENTO ===========================
+% ============================ PRE-PROCESSING =============================
 
-tic;
-
-%   Realiza um pré-processamento (conversão para cinza).
+%   Do a pre-processing step (basically a grayscale conversion).
 [lSnap, rSnap] = preProcessing(lSnap, rSnap);
 
-% ===================== GERAÇÃO DO MAPA DE DISPARIDADES ===================
+% ======================== DISPARITY MAP GENERATION =======================
 while GENERATE == 1
 
-    %   Controla o processo. Se o mapa de disparidades for gerado incorre-
-    % tamente, seu valor volta pra 1, e a geração do mapa é refeita.
+    %   Controls the process. If the generated disparity map is incorrect, 
+    % restarts the process.
     GENERATE = 0;   
 
-    %   Extrai os pontos correspondentes, usando SURF e a Soma das Diferen-
-    % ças Quadradas. 
+    %   Extract the matched features using the SURF algorithm and the Sum 
+    % of Squared Differences. 
     [lPts, rPts] = extractMatchedFeatures(lSnap, rSnap);
     
-    %   Estima a matriz fundamental com LMedS ou MSAC, dependendo do caso.
+    %   Estimates the fundamental matrix using LMedS ou MSAC, depending on 
+    % the case.
     [lPts, rPts, F, error] = fundamentalMatrix(lPts, rPts);
 
-    %   Verifica se a matriz foi gerada com sucesso. Dois casos são verifi-
-    % cados aqui: se o número de correspondências foi suficiente (maior que
-    % sete) ou se a distorção produzida pela matriz é alta demais pra gerar
-    % um mapa. No primeiro caso, é necessária recaptura de imagens; no se-
-    % gundo, basta recalcular-se a matriz. 
+    %   Verifies if the fundamental matrix was successfully generated. Two
+    % cases are verified here: if the number of matches was enough (more
+    % than seven) or if the fundamental matrix may produce distortions. 
+    % In the first case, it's necessary to recapture the images; on second 
+    % case, it's just necessary to recalculate the fundamental matrix. 
     if error == 1
         disp('Low matched features.  Recapture!');
         return;
@@ -85,22 +84,22 @@ while GENERATE == 1
         continue;    
     end
     
-    %   Realiza a retificação usando a matriz fundamental.
+    %   Realizes the rectification step using the fundamental matrix.
     [lRect, rRect, tL, tR] = rectifyImages(lPts, rPts, F, lSnap, rSnap);
 
-    %   Cria o mapa de disparidades.
+    %   Creates the disparity map.
     [dMap, dRng] = disparityMap(lRect, rRect);
 
-    %   Corrige a distorção no mapa, causada pela retificação.
+    %   Fix the map distortion, caused by the rectification step.
     dMap = fixWrap(dMap, tL, tR);
 
-    %   Remove partes do mapa que devem ser desconsideradas.
+    %   Removes some parts of the disparity map that can be inconsiderate.
     dMap = removeGaps(dMap);
 
-    %   Verifica se o mapa obtido obedece à porcentagem máxima de pixels
-    % nulos (sem disparidade). Em caso positivo, outra matriz deve ser ob-
-    % tida, e o processo precisa ser refeito. Em caso negativo, o mapa ini-
-    % cial está pronto (e pode passar por processos de melhora).
+    %   Verifies if the obtained disparity map obey the max number of bad 
+    % pixels (with null disparity). In positive case, another matrix needs 
+    % to be obtained and the process must be redone. Otherwise, the initial 
+    % disparity map is ready (and can be optimized).
     if getFitness(dMap) > MAX_BLNK
         disp('Too much distortions. Retrying...');
         GENERATE = 1;
