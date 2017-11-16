@@ -14,8 +14,8 @@ if strcmp(database, 'Tsukuba') == true
     pathR = 'images/Tsukuba/right/frame_1.png';
 else
     if strcmp(database, 'Middlebury') == true
-        pathL = 'images/Middlebury/Djembe/im0.png';
-        pathR = 'images/Middlebury/Djembe/im1.png';
+        pathL = 'images/Middlebury/Bicycle2/im0.png';
+        pathR = 'images/Middlebury/Bicycle2/im1.png';
     else
         error = 1;
         return;
