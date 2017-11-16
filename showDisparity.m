@@ -11,6 +11,7 @@ figure;
 
 %	Exibe o mapa de disparidades.
 imshow(dMap, dRng);
+colormap jet;
 title(label);
 
 end
