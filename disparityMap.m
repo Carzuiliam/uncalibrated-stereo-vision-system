@@ -1,10 +1,10 @@
 %==========================================================================
 %                      CÁLCULO DO MAPA DE DISPARIDADES
 %
-%   Script responsável pela geração de um mapa de disparidades utilizando o
-% método SemiGlobal, a partir de um par de imagens retificadas. Retorna o 
-% mapa de disparidades produzido, bem como a faixa de valores utilizada na 
-% escala de tons de cinza. Referência:
+%   This script is responsible for the calculation of the disparity map. It
+% returns the produced disparity map (using the SemiGlobal matching method)
+% and the range of the values that was used to generate the disparity map. 
+% Reference:
 %
 % HIRSCHMULLER, H., 2005. Accurate and Efficient Stereo Processing by Semi-
 % Global Matching and Mutual Information. Proc. of Int. Conference on Com-
@@ -13,11 +13,11 @@
 
 function [dispMap, dispRng] = disparityMap(lSnap, rSnap)
 
-%   Configura os possíveis valor de tons de cinza possíveis. O intervalo 
-% precisa estar na base oito.
+%   Configure the range of the possible values for the disparity. The 
+% difference between both values must be multiple of 8 (eight).
 dispRng = [-6 10];
 
-%   Aplica a função de disparidade utilizando a faixa de tons desejados.
+%   Applies the disparity map function.
 dispMap = disparity(lSnap, rSnap, 'DisparityRange', dispRng);
 
 end
