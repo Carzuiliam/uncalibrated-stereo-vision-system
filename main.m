@@ -12,22 +12,33 @@ function main
 %   Used to set the input type: a pair of cameras (1) or a file path (0).
 USE_WCAM = 0;
 
-%   Used to configure the utilized database: Middlebury or Tsukuba.
-%DATABASE = 'Tsukuba';
-DATABASE = 'Middlebury';
+%   Configure the range of the possible values for the disparity. The 
+% difference between both values must be multiple of 16 (sixteen).
+DISP_RNG = [-6 10];
+
+%   Maximum percentage of blank pixels inside the map. The lower this value,
+% the better the map -- but lower values can increase the number of retries
+% to generate a acceptable disparity map, slowing the process.
+MAX_BLNK = 2.0;
+INCRS_RT = 0.1;
+
+%   Used to control the process of the disparity map generation.
+GENERATE = 1;
+
+% ------------------------- If is using a webcam --------------------------
 
 %   The ID of each camera, needed if the images will be captured by the 
 % script.
 LEFT_CAM = 3;
 RGHT_CAM = 1;
 
-%   Maximum percentage of blank pixels inside the map. The lower this value,
-% the better the map -- but lower values can increase the number of retries
-% to generate a acceptable disparity map, slowing the process.
-MAX_BLNK = 5.0;
+% ------------------------ If is using a database -------------------------
 
-%   Used to control the process of the disparity map generation.
-GENERATE = 1;
+%   Used to configure the utilized database (Middlebury or Tsukuba), the 
+% choosen scene and the image format of the choosen database.
+DATABASE = 'Middlebury';
+SCENE    = 'Djembe';
+TYPE     = 'png';
 
 % =========================== LOADING IMAGES ==============================
 
@@ -38,18 +49,18 @@ switch USE_WCAM
         [lSnap, rSnap, error] = extractImages(LEFT_CAM, RGHT_CAM);
     otherwise
         %   File: load images from a directory (Tsukuba or Middlebury).
-        [lSnap, rSnap, error] = testData(DATABASE);        
+        [lSnap, rSnap, error] = loadImages(DATABASE, SCENE, TYPE);        
 end
 
 %   Verify if there are any errors while loading the images.
 if error == 1
-    disp('Can`t find the webcams. Check it!');
+    fprintf('Can`t find the webcams. Check.');
     return;
 end
 
 % ============================ PRE-PROCESSING =============================
 
-%   Do a pre-processing step (basically a grayscale conversion).
+%   Do a pre-processing step.
 [lSnap, rSnap] = preProcessing(lSnap, rSnap);
 
 % ======================== DISPARITY MAP GENERATION =======================
@@ -57,7 +68,11 @@ while GENERATE == 1
 
     %   Controls the process. If the generated disparity map is incorrect, 
     % restarts the process.
-    GENERATE = 0;   
+    GENERATE = 0;
+    
+    %   Tells the user that it's trying generating the disparity map.
+	clc;
+	fprintf('Generating the map. Actual threshold: %.1f\n\n', MAX_BLNK);
 
     %   Extract the matched features using the SURF algorithm and the Sum 
     % of Squared Differences. 
@@ -73,22 +88,31 @@ while GENERATE == 1
     % In the first case, it's necessary to recapture the images; on second 
     % case, it's just necessary to recalculate the fundamental matrix. 
     if error == 1
-        disp('Low matched features.  Recapture!');
+        
+        clc;
+        fprintf('FAILED: low matched features.');
+        
         return;
+    
     end
 
     if isEpipoleInImage(F , size(lSnap)) == true || ...
        isEpipoleInImage(F', size(rSnap)) == true
-        disp('Found epipolar lines. Retrying...');
+        
+        clc;
+        fprintf('(Found epipolar lines. Retrying.)');
+        
         GENERATE = 1;
+        
         continue;    
+    
     end
     
     %   Realizes the rectification step using the fundamental matrix.
     [lRect, rRect, tL, tR] = rectifyImages(lPts, rPts, F, lSnap, rSnap);
 
     %   Creates the disparity map.
-    [dMap, dRng] = disparityMap(lRect, rRect);
+    [dMap, dRng] = disparityMap(lRect, rRect, DISP_RNG);
 
     %   Fix the map distortion, caused by the rectification step.
     dMap = fixWrap(dMap, tL, tR);
@@ -100,14 +124,23 @@ while GENERATE == 1
     % pixels (with null disparity). In positive case, another matrix needs 
     % to be obtained and the process must be redone. Otherwise, the initial 
     % disparity map is ready (and can be optimized).
-    if getFitness(dMap) > MAX_BLNK
-        disp('Too much distortions. Retrying...');
+    if getDisparityFitness(dMap) > MAX_BLNK
+        
+        %   Generates the matrix again, increasing the threshold.
+        MAX_BLNK = MAX_BLNK + INCRS_RT;
         GENERATE = 1;
+        
         continue; 
+    
     else
+                
+        %   Shows the disparity map.
         showImage(lSnap);
-        showDisparity(dMap, dRng, 'Final Disparity Map');
-        disp(getFitness(dMap));
+        showDisparity(dMap, dRng, 'Final Disparity Map');        
+        
+        %   Shows the fitness and the similarity with groundtruth.
+        fprintf('DONE. The fitness is %.4f\n\n', getDisparityFitness(dMap));
+    
     end
     
 end
