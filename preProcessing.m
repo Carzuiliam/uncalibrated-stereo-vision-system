@@ -1,16 +1,22 @@
 %==========================================================================
-%                           PRÉ-PROCESSAMENTO
+%                              PRE-PROCESSING
 %
-%   Scriptresponsável pelo pré-processamento (por hora, apenas a conversão
-% para tonz de cinza) das imagens do sistema de visão estéreo. As imagens 
-% de retorno são as mesmas imagens de entrada, mas pré-processadas. Possi-
-% velmente coisas podem ser adicionadas aqui...
+%   This script is responsible for the pre-processing (for now, just an
+% greyscale conversion and resizing) for each stereo image.
+%
+%   (Maybe I'll try new concepts in the future...)
 %==========================================================================
 
 function [lSnap, rSnap] = preProcessing(lSnap, rSnap)
 
-%	Conversão para tons de cinza.
-lSnap = rgb2gray(lSnap);
-rSnap = rgb2gray(rSnap);
+%	Greyscale conversion (if needed).
+if size(lSnap, 3) == 3
+    lSnap = rgb2gray(lSnap);
+    rSnap = rgb2gray(rSnap);
+end
+
+%   Resize the images.
+lSnap = imresize(lSnap, [240 320]);
+rSnap = imresize(rSnap, [240 320]);
 
 end
