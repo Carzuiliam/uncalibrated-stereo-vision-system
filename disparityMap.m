@@ -11,11 +11,7 @@
 % puter Vision and Pattern Recognition, 2, 807-814.
 %==========================================================================
 
-function [dispMap, dispRng] = disparityMap(lSnap, rSnap)
-
-%   Configure the range of the possible values for the disparity. The 
-% difference between both values must be multiple of 8 (eight).
-dispRng = [-6 10];
+function [dispMap, dispRng] = disparityMap(lSnap, rSnap, dispRng)
 
 %   Applies the disparity map function.
 dispMap = disparity(lSnap, rSnap, 'DisparityRange', dispRng);
