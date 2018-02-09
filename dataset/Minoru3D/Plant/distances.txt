@@ -1,0 +1,6 @@
+------ Distances ------
+
+Wall:			1.50m
+Plant (base):	1.25m
+Leaf (center): 	0.93m
+Right block:	1.00m

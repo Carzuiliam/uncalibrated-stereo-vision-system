@@ -1,0 +1,8 @@
+------ Distances ------
+
+Wall:			0.91m
+Mario:			0.60m
+Box: 			0.65m
+Bottle:			0.70m
+Globe:			0.61m
+Angel:			0.58m
