@@ -35,9 +35,20 @@ end
 
 %   Estima a matriz fundamental, de acordo com a métrica de qualidade esco-
 % lhida.
-[F, inliers] = estimateFundamentalMatrix(lPts, rPts, 'Method', method);
+if error == 0
+    
+    [F, inliers] = estimateFundamentalMatrix(lPts, rPts, 'Method', method);
 
-lPts = lPts(inliers, :);
-rPts = rPts(inliers, :);
+    lPts = lPts(inliers, :);
+    rPts = rPts(inliers, :);
+
+else
+    
+    F = zeros(3);
+    
+    lPts = [0 0];
+    rPts = [0 0];
+
+end
 
 end
