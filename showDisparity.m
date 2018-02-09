@@ -1,7 +1,7 @@
 %==========================================================================
-%                            EXIBIÇÃO DO MAPA
+%                            SHOW DISPARITY
 %
-%   Script responsável por representar o mapa de disparidades na tela.
+%   This script just shows the disparity map on the screen.
 %==========================================================================
 
 function showDisparity(dMap, dRng, label)
@@ -11,7 +11,7 @@ figure;
 
 %	Exibe o mapa de disparidades.
 imshow(dMap, dRng);
-colormap(gray);
+colormap(jet);
 colorbar;
 title(label);
 

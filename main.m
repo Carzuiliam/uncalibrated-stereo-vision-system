@@ -19,7 +19,7 @@ DISP_RNG = [-6 10];
 %   Maximum percentage of blank pixels inside the map. The lower this value,
 % the better the map -- but lower values can increase the number of retries
 % to generate a acceptable disparity map, slowing the process.
-MAX_BLNK = 2.0;
+MAX_BLNK = 3.0;
 INCRS_RT = 0.1;
 
 %   Used to control the process of the disparity map generation.
@@ -30,14 +30,14 @@ GENERATE = 1;
 %   The ID of each camera, needed if the images will be captured by the 
 % script.
 LEFT_CAM = 3;
-RGHT_CAM = 1;
+RGHT_CAM = 2;
 
 % ------------------------ If is using a database -------------------------
 
 %   Used to configure the utilized database (Middlebury or Tsukuba), the 
 % choosen scene and the image format of the choosen database.
 DATABASE = 'Middlebury';
-SCENE    = 'Djembe';
+SCENE    = 'Bicycle2';
 TYPE     = 'png';
 
 % =========================== LOADING IMAGES ==============================
@@ -56,6 +56,11 @@ end
 if error == 1
     fprintf('Can`t find the webcams. Check.');
     return;
+else
+    if error == 2
+        fprintf('Can`t capture the images. Check.');
+        return;
+    end
 end
 
 % ============================ PRE-PROCESSING =============================
@@ -93,7 +98,7 @@ while GENERATE == 1
         fprintf('FAILED: low matched features.');
         
         return;
-    
+
     end
 
     if isEpipoleInImage(F , size(lSnap)) == true || ...
