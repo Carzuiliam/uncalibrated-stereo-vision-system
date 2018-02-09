@@ -1,5 +1,5 @@
 %==========================================================================
-%                   EXTRAÇÃO DE CORRESPONDÊNCIAS INICIAIS
+%                        EXTRACTING MATCHED FEATURES
 %
 %   This script is responsible for extracting matching points between images. 
 % Receives a pair of stereo images as a parameter, and returns the matching
@@ -8,10 +8,10 @@
 
 function [lPts, rPts] = extractMatchedFeatures(lSnap, rSnap)
 
-%   Detects the corners of each image using the SURF algorithm. The SURF
-% algorithm had the best results in a previous analysis.
-surfL = detectSURFFeatures(lSnap);
-surfR = detectSURFFeatures(rSnap);
+%   Detects the corners of each image using the corner detection algorithm.
+% The Min8Val algorithm had the best results in a previous analysis.
+surfL = detectMinEigenFeatures(lSnap);
+surfR = detectMinEigenFeatures(rSnap);
 
 %   Calculates the matches between the obtained corners of each image, using
 % the Sum of Squared Differences (SSD).
