@@ -1,0 +1,7 @@
+------ Distances ------
+
+Television:		1.13m
+Bottle:			0.88m
+Green Bottle:	1.03m
+Pot:			1.00m
+Low Wall:		0.97m
