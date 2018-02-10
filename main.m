@@ -10,7 +10,7 @@ function main
 % =========================== STATIC VARIABLES ============================
 
 %   Used to set the input type: a pair of cameras (1) or a file path (0).
-USE_WCAM = 0;
+USE_WCAM = 1;
 
 %   Configure the range of the possible values for the disparity. The 
 % difference between both values must be multiple of 16 (sixteen).
