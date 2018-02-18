@@ -4,7 +4,7 @@ Este é um projeto em MATLAB cujo objetivo é criar um mapa de disparidades a pa
 
 Materiais utilizados:
 
-- MATLAB R2014b, versão x64: https://www.mathworks.com/products/matlab.html
+- MATLAB R2014b ou posterior, versão x64: https://www.mathworks.com/products/matlab.html
 - Minoru 3D Webcam (opcional): http://www.minoru3d.com/
 
 Como confirgurar o MATLAB:

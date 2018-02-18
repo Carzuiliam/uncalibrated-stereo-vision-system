@@ -4,7 +4,7 @@ This is a project on MATLAB that objective is to create a disparity map from a r
 
 Utilized materials:
 
-- MATLAB R2014b, x64 version: https://www.mathworks.com/products/matlab.html
+- MATLAB R2014b or later, x64 version: https://www.mathworks.com/products/matlab.html
 - Minoru 3D Webcam (optional): http://www.minoru3d.com/
 
 Configuring the MATLAB:

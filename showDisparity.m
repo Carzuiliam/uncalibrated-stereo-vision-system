@@ -6,12 +6,13 @@
 
 function showDisparity(dMap, dRng, label)
 
-%	Cria uma nova figura.
+%	Creates a new figure.
 figure;
+theAxs = axes;
 
-%	Exibe o mapa de disparidades.
-imshow(dMap, dRng);
-colormap(jet);
+%	Shows he disparity map.
+imshow(dMap, dRng, 'Parent', theAxs);
+colormap(theAxs, jet);
 colorbar;
 title(label);
 
