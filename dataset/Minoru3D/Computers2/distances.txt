@@ -1,0 +1,8 @@
+------ Distances ------
+
+Screen (front):		1.05m
+Screen (back):		1.51m (~)
+Computer (front):	0.97m
+Computer (back):	1.46m
+Table (center):		0.84m
+Table (right): 		1.05m
