@@ -29,8 +29,8 @@ GENERATE = 1;
 
 %   The ID of each camera, needed if the images will be captured by the 
 % script.
-LEFT_CAM = 3;
-RGHT_CAM = 1;
+LEFT_CAM = 1;
+RGHT_CAM = 3;
 
 % ------------------------ If is using a database -------------------------
 
