@@ -1,0 +1,9 @@
+------ Distances ------
+
+Computer (left):	1.23m
+Computer (right):	1.32m
+Table:				1.15m
+CPU (left):			1.19m
+CPU (right):		1.26m
+Mouse/Keyboard:		1.42m
+Sockets:			1.30m
