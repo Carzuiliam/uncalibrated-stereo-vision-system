@@ -29,12 +29,12 @@ GENERATE = 1;
 
 %   The ID of each camera, needed if the images will be captured by the 
 % script.
-LEFT_CAM = 1;
+LEFT_CAM = 2;
 RGHT_CAM = 3;
 
 % ------------------------ If is using a database -------------------------
 
-%   Used to configure the utilized database (Middlebury or Tsukuba), the 
+%   Used to configure the utilized database (Middlebury or Minoru3D), the 
 % choosen scene and the image format of the choosen database.
 DATABASE = 'Middlebury';
 SCENE    = 'Bicycle2';
