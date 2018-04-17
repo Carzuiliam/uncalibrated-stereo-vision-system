@@ -1,0 +1,9 @@
+------ Distances ------
+
+Wall:				1.35m
+Faucet (front)		1.15m
+Bottle (top):		1.19m
+Bottle (middle):	1.23m
+Marble				0.74m
+Hole (front):		0.84m
+Hole (back): 		1.23m
