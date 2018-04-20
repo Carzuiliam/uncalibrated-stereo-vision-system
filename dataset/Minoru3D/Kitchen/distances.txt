@@ -1,0 +1,6 @@
+------ Distances ------
+
+Chair:		0.98m
+Microwave:	1.14m
+Grills:		1.15m
+Cabinet:	1.04m

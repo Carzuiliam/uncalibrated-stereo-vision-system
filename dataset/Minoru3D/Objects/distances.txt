@@ -1,0 +1,10 @@
+------ Distances ------
+
+Wall:			1.06m
+Box (left):		0.79m
+Cup:			0.86m
+Bootle:			0.75m
+Box (right):	0.77m
+Bananas:		0.85m
+Books:			0.74m
+Wardrobe:		0.59m

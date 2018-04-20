@@ -1,0 +1,12 @@
+------ Distances ------
+
+Jar:				0.70m
+Bottle (top):		0.59m
+Bottle (middle):	0.64m
+Bottle (bottom):	0.72m
+Flowers:			0.71m
+Small Box (front):	0.64m
+Small Box (left):	0.71m
+Large Box (front):	0.63m
+Large Box (left):	0.74m
+Table (center):		0.74m

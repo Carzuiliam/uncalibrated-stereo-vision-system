@@ -1,0 +1,13 @@
+------ Distances ------
+
+Bottles:			1.25m
+Goku:				1.14m
+Mario (left):		1.05m
+Mario (right):		1.06m
+Link:				1.02m
+Bikes:				1.00m
+Armadillo (left):	1.01m
+Armadillo (right):	1.02m
+Tennis Ball:		1.10m
+Wardrobe:			0.91m
+CD's:				1.02m
