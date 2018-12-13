@@ -10,7 +10,7 @@ function main
 % =========================== STATIC VARIABLES ============================
 
 %   Used to set the input type: a pair of cameras (1) or a file path (0).
-USE_WCAM = 0;
+USE_WCAM = 1;
 
 %   Configure the range of the possible values for the disparity. The 
 % difference between both values must be multiple of 16 (sixteen).
@@ -36,8 +36,8 @@ RGHT_CAM = 3;
 
 %   Used to configure the utilized database (Middlebury or Minoru3D), the 
 % choosen scene and the image format of the choosen database.
-DATABASE = 'Minoru3D';
-SCENE    = 'Boxes';
+DATABASE = 'Middlebury';
+SCENE    = 'Bicycle2';
 TYPE     = 'png';
 
 % =========================== LOADING IMAGES ==============================
