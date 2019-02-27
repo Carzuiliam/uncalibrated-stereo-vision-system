@@ -9,8 +9,8 @@
 function [lSnap, rSnap, error] = loadImages(database, scene, type)
 
 %	Lê os arquivos de imagem de um diretório.
-pathL = strcat('dataset/', database, '/', scene, '/im0.', type);
-pathR = strcat('dataset/', database, '/', scene, '/im1.', type);
+pathL = strcat('../dataset/', database, '/', scene, '/im0.', type);
+pathR = strcat('../dataset/', database, '/', scene, '/im1.', type);
 
 %	Lê os arquivos de imagem de um diretório.
 try 

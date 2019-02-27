@@ -1,5 +1,5 @@
 %==========================================================================
-%                      CÁLCULO DO MAPA DE DISPARIDADES
+%                             DISPARITY MAP
 %
 %   This script is responsible for the calculation of the disparity map. It
 % returns the produced disparity map (using the SemiGlobal matching method)
