@@ -1,5 +1,5 @@
 %==========================================================================
-%                             MAIN SCRIPT
+%                               MAIN SCRIPT
 % 
 %   This is the mains script of the project. It is necessary a stereo image 
 % pair to make this script works.
@@ -10,10 +10,13 @@ function main
 % =========================== STATIC VARIABLES ============================
 
 %   Used to set the input type: a pair of cameras (1) or a file path (0).
-USE_WCAM = 1;
+USE_WCAM = 0;
 
-%   Configure the range of the possible values for the disparity. The 
-% difference between both values must be multiple of 16 (sixteen).
+%   Used to control the process of the disparity map generation.
+GENERATE = 1;
+
+%   Range of the possible values for the disparity. The difference between 
+% both values must be multiple of 16 (sixteen).
 DISP_RNG = [-6 10];
 
 %   Maximum percentage of blank pixels inside the map. The lower this value,
@@ -21,9 +24,6 @@ DISP_RNG = [-6 10];
 % to generate a acceptable disparity map, slowing the process.
 MAX_BLNK = 3.0;
 INCRS_RT = 0.1;
-
-%   Used to control the process of the disparity map generation.
-GENERATE = 1;
 
 % ------------------------- If is using a webcam --------------------------
 
@@ -42,17 +42,17 @@ TYPE     = 'png';
 
 % =========================== LOADING IMAGES ==============================
 
-%   Check the input type.
+%   Checks the input type.
 switch USE_WCAM
     case 1
-        %   Webcam: capture the images using the webcams.
+        %   Webcam: captures the images using the webcams.
         [lSnap, rSnap, error] = extractImages(LEFT_CAM, RGHT_CAM);
     otherwise
-        %   File: load images from a directory (Tsukuba or Middlebury).
+        %   File: loads images from a directory (Tsukuba or Middlebury).
         [lSnap, rSnap, error] = loadImages(DATABASE, SCENE, TYPE);        
 end
 
-%   Verify if there are any errors while loading the images.
+%   Verifies if there are any errors while loading the images.
 if error == 1
     fprintf('Can`t find the webcams. Check.');
     return;
@@ -65,7 +65,7 @@ end
 
 % ============================ PRE-PROCESSING =============================
 
-%   Do a pre-processing step.
+%   Does a pre-processing step.
 [lSnap, rSnap] = preProcessing(lSnap, rSnap);
 
 % ======================== DISPARITY MAP GENERATION =======================
@@ -79,7 +79,7 @@ while GENERATE == 1
 	clc;
 	fprintf('Generating the map. Actual threshold: %.1f\n\n', MAX_BLNK);
 
-    %   Extract the matched features using the SURF algorithm and the Sum 
+    %   Extracts the matched features using the SURF algorithm and the Sum 
     % of Squared Differences. 
     [lPts, rPts] = extractMatchedFeatures(lSnap, rSnap);
     
@@ -119,7 +119,7 @@ while GENERATE == 1
     %   Creates the disparity map.
     [dMap, dRng] = disparityMap(lRect, rRect, DISP_RNG);
 
-    %   Fix the map distortion, caused by the rectification step.
+    %   Fixes the map distortion, caused by the rectification step.
     dMap = fixWrap(dMap, tL, tR);
 
     %   Removes some parts of the disparity map that can be inconsiderate.
@@ -128,7 +128,7 @@ while GENERATE == 1
     %   Verifies if the obtained disparity map obey the max number of bad 
     % pixels (with null disparity). In positive case, another matrix needs 
     % to be obtained and the process must be redone. Otherwise, the initial 
-    % disparity map is ready (and can be optimized).
+    % disparity map is ready.
     if getDisparityFitness(dMap) > MAX_BLNK
         
         %   Generates the matrix again, increasing the threshold.
@@ -150,4 +150,5 @@ while GENERATE == 1
     
 end
 
+%   Ends the script.
 end

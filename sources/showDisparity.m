@@ -10,7 +10,7 @@ function showDisparity(dMap, dRng, label)
 figure;
 theAxs = axes;
 
-%	Shows he disparity map.
+%	Shows the disparity map.
 imshow(dMap, dRng, 'Parent', theAxs);
 colormap(theAxs, jet);
 colorbar;
