@@ -1,8 +1,8 @@
 %==========================================================================
 %                             MAIN SCRIPT
 % 
-%   This is the mains script of the project. It is necessary a webcam pair 
-% or a stereo image pair previously captured to make this script works.
+%   This is the mains script of the project. It is necessary a stereo image 
+% pair to make this script works.
 %==========================================================================
 
 function main
@@ -27,8 +27,8 @@ GENERATE = 1;
 
 % ------------------------- If is using a webcam --------------------------
 
-%   The ID of each camera, needed if the images will be captured by the 
-% script.
+%   The ID of each camera, needed if the images will be captured by a 
+% webcam pair.
 LEFT_CAM = 2;
 RGHT_CAM = 3;
 
