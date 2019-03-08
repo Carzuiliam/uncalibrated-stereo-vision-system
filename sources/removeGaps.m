@@ -7,11 +7,11 @@
 
 function dMap = removeGaps(dMap)
 
-%	Initializes the needed variables.
+%   Initializes the needed variables.
 var = 1;
 [lines, ~] = size(dMap);
 
-%	Removes the nul blocks from the left side of the map.
+%   Removes the nul blocks from the left side of the map.
 while var ~= 0
     
     for i = 2:lines
@@ -26,11 +26,11 @@ while var ~= 0
     
 end
 
-%	Reinitializes the needed variables.
+%   Reinitializes the needed variables.
 var = 1;
 [lines, columns] = size(dMap);
 
-%	Removes the nul blocks from the right side of the map.
+%   Removes the nul blocks from the right side of the map.
 while var ~= 0
     
     for i = 2:lines

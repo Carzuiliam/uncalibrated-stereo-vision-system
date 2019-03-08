@@ -40,6 +40,9 @@ DATABASE = 'Middlebury';
 SCENE    = 'Bicycle2';
 TYPE     = 'png';
 
+%   Defines the default size for the input images.
+IMG_SIZE = [240 320];
+
 % =========================== LOADING IMAGES ==============================
 
 %   Checks the input type.
@@ -54,11 +57,11 @@ end
 
 %   Verifies if there are any errors while loading the images.
 if error == 1
-    fprintf('Can`t find the webcams. Check.');
+    fprintf('Cannot find the webcams. Check.');
     return;
 else
     if error == 2
-        fprintf('Can`t capture the images. Check.');
+        fprintf('Cannot load the images. Check.');
         return;
     end
 end
@@ -66,7 +69,7 @@ end
 % ============================ PRE-PROCESSING =============================
 
 %   Does a pre-processing step.
-[lSnap, rSnap] = preProcessing(lSnap, rSnap);
+[lSnap, rSnap] = preProcessing(lSnap, rSnap, IMG_SIZE);
 
 % ======================== DISPARITY MAP GENERATION =======================
 while GENERATE == 1
@@ -76,8 +79,8 @@ while GENERATE == 1
     GENERATE = 0;
     
     %   Tells the user that it's trying generating the disparity map.
-	clc;
-	fprintf('Generating the map. Actual threshold: %.1f\n\n', MAX_BLNK);
+    clc;
+    fprintf('---> Generating the map.\n---> Current threshold: %.1f\n', MAX_BLNK);
 
     %   Extracts the matched features using the SURF algorithm and the Sum 
     % of Squared Differences. 
@@ -129,7 +132,7 @@ while GENERATE == 1
     % pixels (with null disparity). In positive case, another matrix needs 
     % to be obtained and the process must be redone. Otherwise, the initial 
     % disparity map is ready.
-    if getDisparityFitness(dMap) > MAX_BLNK
+    if disparityFitness(dMap) > MAX_BLNK
         
         %   Generates the matrix again, increasing the threshold.
         MAX_BLNK = MAX_BLNK + INCRS_RT;
@@ -140,11 +143,11 @@ while GENERATE == 1
     else
                 
         %   Shows the disparity map.
-        showImage(lSnap);
-        showDisparity(dMap, dRng, 'Final Disparity Map');        
+        showImage(lSnap, 'Original Image');
+        showImage(dMap, 'Disparity Map', dRng);        
         
         %   Shows the fitness and the similarity with groundtruth.
-        fprintf('DONE. The fitness is %.4f\n\n', getDisparityFitness(dMap));
+        fprintf('---> DONE. Fitness: %.4f\n\n', disparityFitness(dMap));
     
     end
     

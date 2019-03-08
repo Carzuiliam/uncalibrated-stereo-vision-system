@@ -5,14 +5,17 @@
 % a pair of stereo images.
 %==========================================================================
 
-function showPoints(lSnap, rSnap, lPts, rPts, label)
+function showMatches(lImage, rImage, lPoints, rPoints, label)
 
 %	Creates a new figure.
 figure;
 ax = axes;
 
 %	Shows the matches between corresponding points.
-showMatchedFeatures(lSnap, rSnap, lPts, rPts, 'montage', 'Parent', ax);
+showMatchedFeatures(...
+    lImage, rImage, lPoints, rPoints, 'montage', 'Parent', ax...
+);
+
 title(ax, label);
 legend(ax, 'Left Points', 'Right Points');
 

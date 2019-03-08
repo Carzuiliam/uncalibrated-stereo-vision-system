@@ -4,16 +4,16 @@
 %   This script is responsible for load an image pair from a given database.
 %==========================================================================
 
-function [lSnap, rSnap, error] = loadImages(database, scene, type)
+function [lImage, rImage, error] = loadImages(scene, type)
 
 %	Loads the files from a directory.
-pathL = strcat('../dataset/', database, '/', scene, '/im0.', type);
-pathR = strcat('../dataset/', database, '/', scene, '/im1.', type);
+pathL = strcat('../dataset/', scene, '/im0.', type);
+pathR = strcat('../dataset/', scene, '/im1.', type);
 
 %	Reads the images.
 try 
-    lSnap = imread(pathL, type);
-    rSnap = imread(pathR, type);
+    lImage = imread(pathL, type);
+    rImage = imread(pathR, type);
 catch
     error = 1;
     return;
