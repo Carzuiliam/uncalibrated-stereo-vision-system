@@ -25,16 +25,16 @@ Though there are 3 (three) basic steps, the first one demands time, which may bl
 
 3. Once the _Package Installer Manager_ is open, install these two libraries:
 
-	- `USB Webcam`, which allows the MATLAB to recognize USB cameras;
-	- `OS Generic Video Interface`, which allows the MATLAB to capture images using the USB cameras.
+	- "`USB Webcam`", which allows the MATLAB to recognize USB cameras;
+	- "`OS Generic Video Interface`", which allows the MATLAB to capture images using the USB cameras.
 	
 4. Setup the MATLAB path to the folder that contains this project;
 
 5. Now the hardest part. You must find the `ID` of each camera that'll be used in the project. If you have only 2 (two) cameras in your computer, probably the `ID`'s will be 1 (one) for the left camera, and 2 (two) for the right camera. If you have 3 (three) or more cameras connected in your computer, I recommend type `webcamlist` on MATLAB's command line, press _Enter_, and see the result (the cameras will appear based on the `ID` order). 
 
-6. Once discovered the `ID` of each camera, change the values of `LEFT_CAM`/`RGHT_CAM` in the file _main.m_ with the `ID` of each one;
+6. Once discovered the `ID` of each camera, change the values of `LEFT_CAM`/`RGHT_CAM` in the file [main.m](sources/main.c) with the `ID` of each one;
 
-7. Por fim, você pode executar o script `main.m` no MATLAB.
+7. Finally, you can execute the [main.m](sources/main.c) file inside MATLAB.
 
 ## Additional Info
 
