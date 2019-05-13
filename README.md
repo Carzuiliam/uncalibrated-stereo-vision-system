@@ -1,6 +1,6 @@
 # Uncalibrated Stereo Vision System in MATLAB
 
-This project shows a basic model of how to create a disparity map from a real scene, using a camera pair, without previous calibration. 
+This project shows a basic model of how to create a disparity map from a real scene, using a camera pair, without previous calibration. If you are looking for the calibrated version, it's available in [this link](https://github.com/Carzuilha/MATLAB-CalibratedStereoVisionSystem).
 
 ## Introduction
 

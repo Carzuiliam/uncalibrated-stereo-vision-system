@@ -1,6 +1,6 @@
 # Sistema de Visão Estéreo Não-Calibrado em MATLAB
 
-Este projeto exibe um modelo básico de como criar um mapa de disparidades a partir de uma cena real, em conjunto com um par de câmeras, sem calibração prévia. 
+Este projeto exibe um modelo básico de como criar um mapa de disparidades a partir de uma cena real, em conjunto com um par de câmeras, sem calibração prévia. Se você está procurando a versão com calibração, ela está disponível [neste link](https://github.com/Carzuilha/MATLAB-CalibratedStereoVisionSystem).
 
 ## Introdução
 
