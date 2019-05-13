@@ -10,7 +10,7 @@ Um **mapa de disparidades** é uma representação gráfica da profundidade de e
  - A **retificação**, em que os parâmetros obtidos na etapa anterior são utilizados como referência no processo de captura (e posteriormente ajuste) das imagens de uma cena;
  - A **correspondência**, que parte das imagens obtidas pelo processo de retificação para gerar o mapa de disparidades.
 
-Embora existam três etapas básicas, a primeira demanda tempo, o que pode impedir a utilização de sistemas de visão estéreo em ambientes reais. Por isso, há muitos estudos sobre como modelar sistemas de visão estéreo sem dependência de calibração [[1](https://www.researchgate.net/publication/220692096_Introductory_techniques_for_3-D_computer_vision)]. Uma das maneiras de se fazer isso é calculando um dos elementos-chave da etapa de calibração (conhecido como **matriz fundamental** [[2](https://www.cambridge.org/core/books/multiple-view-geometry-in-computer-vision/0B6F289C78B2B23F596CAA76D3D43F7A)]) utilizando apenas a geometria da cena a ser analisada. É o que este projeto faz. 
+Embora existam três etapas básicas, a primeira demanda tempo, o que pode impedir a utilização de sistemas de visão estéreo em ambientes reais. Por isso, há muitos estudos sobre como modelar sistemas de visão estéreo sem dependência de calibração [1]. Uma das maneiras de se fazer isso é calculando um dos elementos-chave da etapa de calibração (conhecido como **matriz fundamental** [2]) utilizando apenas a geometria da cena a ser analisada. É o que este projeto faz. 
 
 ## Materiais Utilizados
 
@@ -43,3 +43,9 @@ Você pode precisar de uma conta no MATLAB (não se preocupe, esta é gratuita) 
 ## Licença de Uso
 
 Os códigos disponibilizados aqui estão sob a licença do MIT, versão 3.0 (veja o arquivo `LICENSE` em anexo para mais detalhes). Dúvidas sobre este projeto podem ser enviadas para o meu e-mail: carloswdecarvalho@outlook.com.
+
+## Referências
+
+[1]	Trucco, E; Verri, A. "Introductory Techniques for 3-D Computer Vision." Prentice Hall, 1998.
+
+[2] Hartley, R; Zisserman, A. "Multiple View Geometry in Computer Vision". Cambridge University Press, 2003.
