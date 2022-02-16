@@ -14,7 +14,7 @@ Embora existam três etapas básicas, a primeira demanda tempo, o que pode imped
 
 ## Materiais Utilizados
 
-- [**MATLAB R2017b**](https://www.mathworks.com/products/matlab.html) ou posterior, versão x64.
+- [**MATLAB R2017b**](https://www.mathworks.com/products/matlab.html) ou posterior, versão x64;
 - Uma **câmera 3D**, ou um **par de cameras** simulando um sistema de visão estéreo. No caso, eu utilizo a [Minoru3D](http://www.minoru3d.com/).
 
 ## Como Configurar o MATLAB
@@ -42,7 +42,7 @@ Você pode precisar de uma conta no MATLAB (não se preocupe, esta é gratuita) 
 
 ## Licença de Uso
 
-Os códigos disponibilizados aqui estão sob a licença Apache, versão 2.0 (veja o arquivo `LICENSE` em anexo para mais detalhes). Dúvidas sobre este projeto podem ser enviadas para o meu e-mail: carloswdecarvalho@outlook.com.
+Os códigos disponibilizados aqui estão sob a licença Apache, versão 2.0 (veja o arquivo `LICENSE` em anexo para mais detalhes). Dúvidas sobre este projeto podem ser enviadas para o meu e-mail: carloswilldecarvalho@outlook.com.
 
 ## Referências
 

@@ -14,7 +14,7 @@ Though there are 3 (three) basic steps, the first one demands time, which may bl
 
 ## Utilized Material
 
-- [**MATLAB R2017b**](https://www.mathworks.com/products/matlab.html) or later, x64 version.
+- [**MATLAB R2017b**](https://www.mathworks.com/products/matlab.html) or later, x64 version;
 - A **3D camera**, or a **pair of cameras** to simulate the stereo vision system. Personally, I use the [Minoru3D](http://www.minoru3d.com/).
 
 ## How to Setup MATLAB
@@ -42,7 +42,7 @@ You may need a MATLAB account (don't worry, it's free) to download and install t
 
 ## License
 
-The available source codes here are under the Apache License, version 2.0 (see the attached `LICENSE` file for more details). Any questions can be submitted to my email: carloswdecarvalho@outlook.com.
+The available source codes here are under the Apache License, version 2.0 (see the attached `LICENSE` file for more details). Any questions can be submitted to my email: carloswilldecarvalho@outlook.com.
 
 ## References
 
